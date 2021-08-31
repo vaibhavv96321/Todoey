@@ -2,6 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AddTasks extends StatelessWidget {
+  static String newTask = '';
+  final Function() addTaskCallback;
+
+  AddTasks(this.addTaskCallback);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -36,7 +41,9 @@ class AddTasks extends StatelessWidget {
                     autofocus: true,
                     scrollPadding: EdgeInsets.all(10),
                     textAlign: TextAlign.center,
-                    onChanged: (value) {},
+                    onChanged: (value) {
+                      newTask = value;
+                    }, //add Task
                     cursorColor: Colors.grey,
                     cursorHeight: 25,
                     style: TextStyle(fontSize: 20, fontFamily: 'Mont'),
@@ -49,7 +56,7 @@ class AddTasks extends StatelessWidget {
                           borderRadius: BorderRadius.circular(30)),
                       padding: EdgeInsets.all(10),
                       fillColor: Colors.lightBlueAccent,
-                      onPressed: () {},
+                      onPressed: addTaskCallback,
                       child: Text(
                         'Add',
                         style: TextStyle(
