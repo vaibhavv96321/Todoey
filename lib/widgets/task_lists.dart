@@ -14,7 +14,8 @@ class TaskLists extends StatelessWidget {
               taskdata.list[count].name,
               taskdata.list[count].isDone,
               (newValue) {
-                // taskdata.list[count].toggleDone();
+                taskdata.list[count].toggleDone();
+                taskdata.updateLists();
               },
             );
           },

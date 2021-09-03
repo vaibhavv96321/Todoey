@@ -1,11 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:todoey_list/models/task_data.dart';
 
 class AddTasks extends StatelessWidget {
   static String newTask = '';
-  final Function() addTaskCallback;
-
-  AddTasks(this.addTaskCallback);
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +55,11 @@ class AddTasks extends StatelessWidget {
                           borderRadius: BorderRadius.circular(30)),
                       padding: EdgeInsets.all(10),
                       fillColor: Colors.lightBlueAccent,
-                      onPressed: addTaskCallback,
+                      onPressed: () {
+                        Provider.of<TaskData>(context, listen: false)
+                            .addLists();
+                        Navigator.pop(context);
+                      },
                       child: Text(
                         'Add',
                         style: TextStyle(

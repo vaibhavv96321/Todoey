@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todoey_list/screens/new_add_screen.dart';
 import 'tasks.dart';
 
 class TaskData extends ChangeNotifier {
@@ -13,5 +14,12 @@ class TaskData extends ChangeNotifier {
     return list.length;
   }
 
-  void updateCallback() {}
+  void addLists() {
+    list.add(Tasks(name: AddTasks.newTask));
+    notifyListeners();
+  }
+
+  void updateLists() {
+    notifyListeners();
+  }
 }
