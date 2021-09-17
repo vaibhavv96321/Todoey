@@ -25,7 +25,7 @@ class TaskLists extends StatelessWidget {
   }
 }
 
-class NewTaskLists extends StatelessWidget {
+class EditedTaskList extends StatelessWidget {
   String newTextValue = '';
 
   bool focus = false;

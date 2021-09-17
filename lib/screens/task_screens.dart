@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todoey_list/models/task_data.dart';
-import 'package:todoey_list/models/tasks.dart';
+import 'package:todoey_list/screens/task_editing_drawer.dart';
 import 'package:todoey_list/widgets/task_lists.dart';
 import 'new_add_screen.dart';
 
@@ -95,46 +95,6 @@ class _TasksScreenState extends State<TasksScreen> {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class DrawerWidget extends StatelessWidget {
-  List<Tasks> lists = [];
-
-  @override
-  Widget build(BuildContext context) {
-    return Drawer(
-      elevation: 20,
-      child: ListView(
-        children: [
-          DrawerHeader(
-            decoration: BoxDecoration(color: Colors.lightBlueAccent),
-            child: ListView(
-              children: [
-                SizedBox(
-                  height: 25,
-                ),
-                Text(
-                  'Tasks',
-                  style: TextStyle(
-                    fontSize: 43,
-                    color: Colors.white,
-                  ),
-                ),
-                Text(
-                  '(Edit Your Tasks)',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.white,
-                  ),
-                )
-              ],
-            ),
-          ),
-          NewTaskLists(),
-        ],
       ),
     );
   }

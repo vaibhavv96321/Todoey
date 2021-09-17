@@ -37,6 +37,7 @@ class AddTasks extends StatelessWidget {
                     height: 20,
                   ),
                   TextField(
+                    decoration: InputDecoration(hintText: 'Task'),
                     autofocus: true,
                     scrollPadding: EdgeInsets.all(10),
                     textAlign: TextAlign.center,
