@@ -1,5 +1,5 @@
 class Tasks {
-  final String name;
+  String name;
   bool isDone;
 
   Tasks({this.name = ' ', this.isDone = false});

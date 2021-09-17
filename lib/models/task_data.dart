@@ -3,11 +3,7 @@ import 'package:todoey_list/screens/new_add_screen.dart';
 import 'tasks.dart';
 
 class TaskData extends ChangeNotifier {
-  List<Tasks> list = [
-    Tasks(name: 'Buy Bread'),
-    Tasks(name: 'Do Homework'),
-    Tasks(name: 'Buy Fruits'),
-  ];
+  List<Tasks> list = [];
 
   int get taskCount //used to read or get the data of the class field
   {

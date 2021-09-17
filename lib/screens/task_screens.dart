@@ -1,14 +1,28 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:todoey_list/models/task_data.dart';
+import 'package:todoey_list/models/tasks.dart';
 import 'package:todoey_list/widgets/task_lists.dart';
 import 'new_add_screen.dart';
-import 'package:provider/provider.dart';
 
-class TasksScreen extends StatelessWidget {
+class TasksScreen extends StatefulWidget {
+  @override
+  _TasksScreenState createState() => _TasksScreenState();
+}
+
+class _TasksScreenState extends State<TasksScreen> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  void _openDrawer() {
+    _scaffoldKey.currentState!.openDrawer();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
+      drawer: DrawerWidget(),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () {
@@ -28,12 +42,15 @@ class TasksScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CircleAvatar(
-                    backgroundColor: Colors.white,
-                    radius: 40,
-                    child: Icon(
-                      Icons.list,
-                      size: 50,
+                  GestureDetector(
+                    onTap: _openDrawer,
+                    child: CircleAvatar(
+                      backgroundColor: Colors.white,
+                      radius: 40,
+                      child: Icon(
+                        Icons.list,
+                        size: 50,
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -78,6 +95,46 @@ class TasksScreen extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class DrawerWidget extends StatelessWidget {
+  List<Tasks> lists = [];
+
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      elevation: 20,
+      child: ListView(
+        children: [
+          DrawerHeader(
+            decoration: BoxDecoration(color: Colors.lightBlueAccent),
+            child: ListView(
+              children: [
+                SizedBox(
+                  height: 25,
+                ),
+                Text(
+                  'Tasks',
+                  style: TextStyle(
+                    fontSize: 43,
+                    color: Colors.white,
+                  ),
+                ),
+                Text(
+                  '(Edit Your Tasks)',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                  ),
+                )
+              ],
+            ),
+          ),
+          NewTaskLists(),
+        ],
       ),
     );
   }
