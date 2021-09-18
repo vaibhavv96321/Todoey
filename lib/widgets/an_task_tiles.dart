@@ -26,7 +26,7 @@ class _TaskTilesState extends State<TaskTiles> {
     if (t != null) {
       setState(() {
         _stringTime = t.format(context);
-        if (widget.isChanged == true) {
+        if (widget.isChanged == false) {
           scheduleAlarm(DateTime(
               // because timeofDay only contains hour and minute and DateTime contains many things
               _selectedTime.year,
